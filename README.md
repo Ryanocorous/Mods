@@ -19,3 +19,6 @@ Changes:
 3) Revive and max revived is nerfed.
 4) Other effects that will catch you off guard :)
 
+## Ryan's Pokeballs
+
+To be added soon.
