@@ -18,10 +18,12 @@ The aim of this mod is to make a nuzlocke run much harder. The rules are simple.
 
 Changes:
 
-1) All potions now heal much less than before. There is no full restore.
+1) All potions now heal much less than before. There is no full restore, instread it will heal you to close to full hp
 2) All items that remove status effects now cause you to take some damage.
 3) Revive and max revived is nerfed.
 4) Other effects that will catch you off guard :)
+
+**Note: The items will list incorrect healing amounts currently. I will fix this later.**
 
 ## Ryan's Pokeballs
 
