@@ -8,6 +8,10 @@
 
 # Mod descriptions 
 
+## Hidden ability mod
+
+Makes all routes able to have Hidden Ability Pokemon. 
+
 ## IB_EFFECTS (In battle effects) 
 
 The aim of this mod is to make a nuzlocke run much harder. The rules are simple. You are allowed to use items in the nuzlocke run, however these items have been greatly nerfed.
