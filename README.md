@@ -1,7 +1,7 @@
 # Mods installation 
 ## HOW TO INSTALL:
 
-1) Install KIF (Kuray's infinite fusion) to allow mods
+1) Install KIF (Kuray's infinite fusion) to allow mods (https://discord.gg/8Tb7WfSD)
 2) Inside your KIF directory where game.exe (or game) exists, add a mod folder if it's not there already. This is done by adding a folder and calling it "mods".
 3) Inside the mod folder, drag and drop or copy and paste the rb file you want to add
 4) Run the game, enjoy.
