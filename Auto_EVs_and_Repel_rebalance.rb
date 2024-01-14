@@ -1,3 +1,6 @@
+#HEY ALL! This mod makes wings give 255 EVs for the category they improve.
+#Additionally, repels are rebalanced but this is optional. See below:
+
 #Options
 #To set the options for repels, simply change the values after
 #For example, to change:
