@@ -21,7 +21,7 @@ Super_repel_steps = 225
 
 Max_repel_steps = 300
 
-# Change the above numbers to the option you want. Have fun!. #
+# Change the above numbers to the options you want. Have fun!. #
 
 # Code:
 
