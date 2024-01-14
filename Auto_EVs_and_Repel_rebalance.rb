@@ -14,11 +14,11 @@ Max_repel_steps = 300
 
 # Change the above numbers to the options you want. Have fun!. #
 
-#Wing options:
+#Wing and vitamin options:
 
-wingraise = 16 # to allow EVs to be raised in marginal amounts.
+wingraise = 16 # to allow EVs to be raised in marginal amounts, change to whatever.
 
-vitaminraise = 252 # full EVs.
+vitaminraise = 252 # full EVs. Each vitamins takes EVs to full.
 
 # Code:
 
