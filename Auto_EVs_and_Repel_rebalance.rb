@@ -48,7 +48,7 @@ ItemHandlers::UseOnPokemon.add(:HEALTHWING, proc { |item, pkmn, scene|
     next false
   end
   scene.pbRefresh
-  scene.pbDisplay(_INTL("{1}'s HP increased..", pkmn.name))
+  scene.pbDisplay(_INTL("{1}'s HP increased.", pkmn.name))
   pkmn.changeHappiness("wing")
   next true
 })
