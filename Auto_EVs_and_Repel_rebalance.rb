@@ -1,16 +1,7 @@
 #HEY ALL! This mod makes wings give 255 EVs for the category they improve.
 #Additionally, repels are rebalanced but this is optional. See below:
 
-#Options
-#To set the options for repels, simply change the values after
-#For example, to change:
-
-#Repel to 100
-
-#Simply change the value of repel below (after the = ) to 100.
-
-#So "Repel_steps = 150" would become "Repel_steps = 100"
-
+#OPTIONS BELOW#
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - #
 
 Fusion_incense_steps = 100
@@ -22,6 +13,12 @@ Super_repel_steps = 225
 Max_repel_steps = 300
 
 # Change the above numbers to the options you want. Have fun!. #
+
+#Wing options:
+
+wingraise = 16 # to allow EVs to be raised in marginal amounts.
+
+vitaminraise = 252 # full EVs.
 
 # Code:
 
@@ -46,18 +43,18 @@ ItemHandlers::UseInField.add(:MAXREPEL, proc { |item|
 
 
 ItemHandlers::UseOnPokemon.add(:HEALTHWING, proc { |item, pkmn, scene|
-  if pbRaiseEffortValues(pkmn, :HP, 252, false) == 0
+  if pbRaiseEffortValues(pkmn, :HP, wingraise, false) == 0
     scene.pbDisplay(_INTL("It won't have any effect."))
     next false
   end
   scene.pbRefresh
-  scene.pbDisplay(_INTL("{1}'s HP increased.", pkmn.name))
+  scene.pbDisplay(_INTL("{1}'s HP increased..", pkmn.name))
   pkmn.changeHappiness("wing")
   next true
 })
 
 ItemHandlers::UseOnPokemon.add(:MUSCLEWING, proc { |item, pkmn, scene|
-  if pbRaiseEffortValues(pkmn, :ATTACK, 252, false) == 0
+  if pbRaiseEffortValues(pkmn, :ATTACK, wingraise, false) == 0
     scene.pbDisplay(_INTL("It won't have any effect."))
     next false
   end
@@ -67,7 +64,7 @@ ItemHandlers::UseOnPokemon.add(:MUSCLEWING, proc { |item, pkmn, scene|
 })
 
 ItemHandlers::UseOnPokemon.add(:RESISTWING, proc { |item, pkmn, scene|
-  if pbRaiseEffortValues(pkmn, :DEFENSE, 252, false) == 0
+  if pbRaiseEffortValues(pkmn, :DEFENSE, wingraise, false) == 0
     scene.pbDisplay(_INTL("It won't have any effect."))
     next false
   end
@@ -77,7 +74,7 @@ ItemHandlers::UseOnPokemon.add(:RESISTWING, proc { |item, pkmn, scene|
 })
 
 ItemHandlers::UseOnPokemon.add(:GENIUSWING, proc { |item, pkmn, scene|
-  if pbRaiseEffortValues(pkmn, :SPECIAL_ATTACK, 252, false) == 0
+  if pbRaiseEffortValues(pkmn, :SPECIAL_ATTACK, wingraise, false) == 0
     scene.pbDisplay(_INTL("It won't have any effect."))
     next false
   end
@@ -87,7 +84,7 @@ ItemHandlers::UseOnPokemon.add(:GENIUSWING, proc { |item, pkmn, scene|
 })
 
 ItemHandlers::UseOnPokemon.add(:CLEVERWING, proc { |item, pkmn, scene|
-  if pbRaiseEffortValues(pkmn, :SPECIAL_DEFENSE, 252, false) == 0
+  if pbRaiseEffortValues(pkmn, :SPECIAL_DEFENSE, wingraise, false) == 0
     scene.pbDisplay(_INTL("It won't have any effect."))
     next false
   end
@@ -97,11 +94,74 @@ ItemHandlers::UseOnPokemon.add(:CLEVERWING, proc { |item, pkmn, scene|
 })
 
 ItemHandlers::UseOnPokemon.add(:SWIFTWING, proc { |item, pkmn, scene|
-  if pbRaiseEffortValues(pkmn, :SPEED, 252, false) == 0
+  if pbRaiseEffortValues(pkmn, :SPEED, wingraise, false) == 0
     scene.pbDisplay(_INTL("It won't have any effect."))
     next false
   end
   scene.pbDisplay(_INTL("{1}'s Speed increased.", pkmn.name))
   pkmn.changeHappiness("wing")
+  next true
+})
+
+ItemHandlers::UseOnPokemon.add(:PROTEIN, proc { |item, pkmn, scene|
+  if pbRaiseEffortValues(pkmn, :ATTACK, vitaminraise, false) == 0
+    scene.pbDisplay(_INTL("It won't have any effect."))
+    next false
+  end
+  scene.pbDisplay(_INTL("{1}'s Attack maxed out.", pkmn.name))
+  pkmn.changeHappiness("vitamin")
+  next true
+})
+
+ItemHandlers::UseOnPokemon.add(:IRON, proc { |item, pkmn, scene|
+  if pbRaiseEffortValues(pkmn, :DEFENSE, vitaminraise, false) == 0
+    scene.pbDisplay(_INTL("It won't have any effect."))
+    next false
+  end
+  scene.pbDisplay(_INTL("{1}'s Defense maxed out.", pkmn.name))
+  pkmn.changeHappiness("vitamin")
+  next true
+})
+
+ItemHandlers::UseOnPokemon.add(:CALCIUM, proc { |item, pkmn, scene|
+  if pbRaiseEffortValues(pkmn, :SPECIAL_ATTACK, vitaminraise, false) == 0
+    scene.pbDisplay(_INTL("It won't have any effect."))
+    next false
+  end
+  scene.pbDisplay(_INTL("{1}'s Special Attack maxed out.", pkmn.name))
+  pkmn.changeHappiness("vitamin")
+  next true
+})
+
+
+ItemHandlers::UseOnPokemon.add(:ZINC, proc { |item, pkmn, scene|
+  if pbRaiseEffortValues(pkmn, :SPECIAL_DEFENSE, vitaminraise, false) == 0
+    scene.pbDisplay(_INTL("It won't have any effect."))
+    next false
+  end
+  scene.pbDisplay(_INTL("{1}'s Special Defense maxed out.", pkmn.name))
+  pkmn.changeHappiness("wing")
+  next true
+})
+
+ItemHandlers::UseOnPokemon.add(:CARBOS, proc { |item, pkmn, scene|
+  if pbRaiseEffortValues(pkmn, :SPEED, vitaminraise, false) == 0
+    scene.pbDisplay(_INTL("It won't have any effect."))
+    next false
+  end
+  scene.pbDisplay(_INTL("{1}'s Speed maxed out.", pkmn.name))
+  pkmn.changeHappiness("wing")
+  next true
+})
+
+
+ItemHandlers::UseOnPokemon.add(:HPUP, proc { |item, pkmn, scene|
+  if pbRaiseEffortValues(pkmn, :HP, vitaminraise, false) == 0
+    scene.pbDisplay(_INTL("It won't have any effect."))
+    next false
+  end
+  scene.pbRefresh
+  scene.pbDisplay(_INTL("{1}'s HP maxed out.", pkmn.name))
+  pkmn.changeHappiness("vitamin")
   next true
 })
