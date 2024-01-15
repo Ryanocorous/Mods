@@ -16,14 +16,14 @@ heal = 1.25				# Catchrate of healball
 
 #premier
 premier = 1.1 			# This is the multiplier.
-premierflat = 16.2 		# This is the additive catch rate. This makes the ball good against legendaries.
+premierflat = 19.2 		# This is the additive catch rate. This makes the ball good against legendaries.
 
 # EXPLANATION OF PREMIERBALL
 # --------------------------
-# Now with these stats, premierball is increased from x1 to (x1.1 + 16.2)
+# Now with these stats, premierball is increased from x1 to (x1.1 + 19.2)
 # If we used mewtwo as an example with a catchrate of 3 (like most legendaries):
-# It's 3 x 1.1 + 16.2 = 19.5.
-# this is essentially 5.5x catch rate, making premier ball the best ball in this situation.
+# It's 3 x 1.1 + 19.2 = 22.5.
+# this is essentially 6.5x catch rate, making premier ball one of the best balls in this situation.
 # --------------------------
 
 #netball
@@ -89,7 +89,7 @@ BallHandlers::ModifyCatchRate.add(:SAFARIBALL,proc { |ball,catchRate,battle,batt
 })
 
 BallHandlers::ModifyCatchRate.add(:PREMIERBALL,proc { |ball,catchRate,battle,battler,ultraBeast|
-  next catchrate*premier+premierflat
+  next (catchrate*premier)+premierflat
 })
 
 BallHandlers::ModifyCatchRate.add(:NETBALL,proc { |ball,catchRate,battle,battler,ultraBeast|
