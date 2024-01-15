@@ -1,7 +1,18 @@
+##ALPHA##
+version = 0.4
+# Changes
+# Fixed a bug with permier balls where an error message is thrown up.
+# Fixed a bug with virus balls (hopefully)
+# Other fixes and code rewrites, comments are changed to reflect new balance
+
+
 # Instructions: 
 # How to edit
 # It is recommended you leave the values as they are.
 # Change the number immedietly after the = sign. Read the comments (anything wrote after #) before changing or you might break the game.
+
+##issues: virus balls? needs checking
+
 
 #standard balls multiplier
 great = 1.75			# Increased to 1.75
@@ -16,14 +27,17 @@ heal = 1.25				# Catchrate of healball
 
 #premier
 premier = 1.1 			# This is the multiplier.
-premierflat = 19.2 		# This is the additive catch rate. This makes the ball good against legendaries.
+premierflat = 16.2 		# This is the additive catch rate. This makes the ball good against legendaries.
 
 # EXPLANATION OF PREMIERBALL
 # --------------------------
-# Now with these stats, premierball is increased from x1 to (x1.1 + 19.2)
+# Now with these stats, premierball is increased from x1 to (x1.1 + 16.2)
 # If we used mewtwo as an example with a catchrate of 3 (like most legendaries):
-# It's 3 x 1.1 + 19.2 = 22.5.
-# this is essentially 6.5x catch rate, making premier ball one of the best balls in this situation.
+# It's 3 x 1.1 + 16.2 = 19.5.
+# this is essentially 6.5x catch rate, making premier ball the best ball in this situation.
+# If we use pikachu as an example
+# It's 190 x 1.1 + 16.2
+# This makes it barely better than a pokeball for pikachu (about 20% improvement)
 # --------------------------
 
 #netball
@@ -33,8 +47,8 @@ net = 4					# Catchrate of water+bug pokemon
 dive = 4				# Catchrate of undersea pokemon
 
 #nestball
-nestmaxlevel = 50 		# This determines what level the nest ball works below. So under level 45 nestball has increased catchrate.
-nestconstant = 80 		# This is a constant to work out the catch rate. Higher = higher catch rate. range is 50-120
+nestmaxlevel = 50 		# This determines what level the nest ball works below. So under level 50 nestball has increased catchrate.
+nestconstant = 80 		# This is a constant to work out the catch rate. Higher = higher catch rate. 
 nestdivider = 14   		# (80 - pokemon level) / divider = catch rate. don't touch it if you don't understand.
 
 #repeatball
@@ -89,8 +103,12 @@ BallHandlers::ModifyCatchRate.add(:SAFARIBALL,proc { |ball,catchRate,battle,batt
 })
 
 BallHandlers::ModifyCatchRate.add(:PREMIERBALL,proc { |ball,catchRate,battle,battler,ultraBeast|
-  next (catchrate*premier)+premierflat
+  multiplier = premier
+  multiplied = multiplier
+  catchrate = multiplied + premierflat
+  next catchrate
 })
+
 
 BallHandlers::ModifyCatchRate.add(:NETBALL,proc { |ball,catchRate,battle,battler,ultraBeast|
   multiplier = net
@@ -110,6 +128,8 @@ BallHandlers::ModifyCatchRate.add(:NESTBALL,proc { |ball,catchRate,battle,battle
   next catchRate
 })
 
+
+#####fix this
 BallHandlers::ModifyCatchRate.add(:REPEATBALL,proc { |ball,catchRate,battle,battler,ultraBeast|
   multiplier = repeat
   catchRate *= multiplier if battle.pbPlayer.owned?(battler.species)
@@ -257,14 +277,14 @@ BallHandlers::OnCatch.add(:ABILITYBALL,proc{|ball,battle,pokemon|
 
 #I made the ball much more likely to catch, but less likely to apply pokerus. 20% chance of pokerus.
 BallHandlers::ModifyCatchRate.add(:VIRUSBALL,proc{|ball,catchRate,battle,pokemon|
-  catchRate=(catchrate*10)+20
+  catchRate*=1.25
 next catchRate
 })
 
 
 BallHandlers::OnCatch.add(:VIRUSBALL,proc{|ball,battle,pokemon|
   chance = rand(1..10)
-  if chance <= 5
+  if chance <= 2
     pokemon.givePokerus
   end
 })
