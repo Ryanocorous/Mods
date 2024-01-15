@@ -20,7 +20,7 @@ premierflat = 16.2 		# This is the additive catch rate. This makes the ball good
 
 # EXPLANATION OF PREMIERBALL
 # --------------------------
-# Now with these stats, premierball is increased from x1 to (x1.1 + 19.7)
+# Now with these stats, premierball is increased from x1 to (x1.1 + 16.2)
 # If we used mewtwo as an example with a catchrate of 3 (like most legendaries):
 # It's 3 x 1.1 + 16.2 = 19.5.
 # this is essentially 5.5x catch rate, making premier ball the best ball in this situation.
